@@ -22,10 +22,10 @@ LOG_MODULE_REGISTER(nrf5340pdk_nrf5340_cpuapp, CONFIG_LOG_DEFAULT_LEVEL);
 #if !defined(CONFIG_TRUSTED_EXECUTION_NONSECURE)
 
 /* This should come from DTS, possibly an overlay. */
-#define CPUNET_UARTE_PIN_TX  25
-#define CPUNET_UARTE_PIN_RX  26
-#define CPUNET_UARTE_PIN_RTS 10
-#define CPUNET_UARTE_PIN_CTS 12
+#define CPUNET_UARTE_PIN_TX  1
+#define CPUNET_UARTE_PIN_RX  0
+#define CPUNET_UARTE_PIN_RTS 11
+#define CPUNET_UARTE_PIN_CTS 10
 
 static void remoteproc_mgr_config(void)
 {
@@ -33,9 +33,9 @@ static void remoteproc_mgr_config(void)
 	/* Assign specific GPIOs that will be used to get UARTE from
 	 * nRF5340 Network MCU.
 	 */
-	NRF_P0->PIN_CNF[CPUNET_UARTE_PIN_TX] =
+	NRF_P1->PIN_CNF[CPUNET_UARTE_PIN_TX] =
 	GPIO_PIN_CNF_MCUSEL_NetworkMCU << GPIO_PIN_CNF_MCUSEL_Pos;
-	NRF_P0->PIN_CNF[CPUNET_UARTE_PIN_RX] =
+	NRF_P1->PIN_CNF[CPUNET_UARTE_PIN_RX] =
 	GPIO_PIN_CNF_MCUSEL_NetworkMCU << GPIO_PIN_CNF_MCUSEL_Pos;
 	NRF_P0->PIN_CNF[CPUNET_UARTE_PIN_RTS] =
 	GPIO_PIN_CNF_MCUSEL_NetworkMCU << GPIO_PIN_CNF_MCUSEL_Pos;
