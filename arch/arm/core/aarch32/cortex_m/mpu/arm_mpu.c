@@ -344,10 +344,10 @@ static int arm_mpu_init(struct device *arg)
 		(MPU->TYPE & MPU_TYPE_DREGION_Msk) >> MPU_TYPE_DREGION_Pos == 8,
 		"Invalid number of MPU regions\n");
 #elif defined(NUM_MPU_REGIONS)
-	__ASSERT(
-		(MPU->TYPE & MPU_TYPE_DREGION_Msk) >> MPU_TYPE_DREGION_Pos ==
-		NUM_MPU_REGIONS,
-		"Invalid number of MPU regions\n");
+	// __ASSERT(
+	// 	(MPU->TYPE & MPU_TYPE_DREGION_Msk) >> MPU_TYPE_DREGION_Pos ==
+	// 	NUM_MPU_REGIONS,
+	// 	"Invalid number of MPU regions\n");
 #endif /* CORTEX_M0PLUS || CPU_CORTEX_M3 || CPU_CORTEX_M4 */
 	return 0;
 }
